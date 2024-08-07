@@ -1,0 +1,36 @@
+<ioc xmlns="http://schemas.mandiant.com/2010/ioc">
+  <short_description>RedLine Stealer IOC</short_description>
+  <description>Indicators of Compromise for RedLine Stealer malware</description>
+  <definition>
+    <Indicator operator="OR">
+      <IndicatorItem condition="contains">
+        <Context document="Memory" search="MemoryStrings" type="mir" />
+        <Content type="string">redline</Content>
+      </IndicatorItem>
+      <IndicatorItem condition="is">
+        <Context document="FileItem" search="FileItem/Md5sum" type="mir" />
+        <Content type="md5">e8f2f20d22f8f9290f8c7da75f5d82b4</Content>
+      </IndicatorItem>
+      <IndicatorItem condition="is">
+        <Context document="FileItem" search="FileItem/Sha1sum" type="mir" />
+        <Content type="sha1">5e4c7d879fa4c6e24d2e6dc570a2af67a15db3b8</Content>
+      </IndicatorItem>
+      <IndicatorItem condition="is">
+        <Context document="FileItem" search="FileItem/Sha256sum" type="mir" />
+        <Content type="sha256">d8e4a8e6f8e60d933f2e299bcb6202304a617dcf69e5a8db5d6c1b35d4a6a5c6</Content>
+      </IndicatorItem>
+      <IndicatorItem condition="is">
+        <Context document="RegistryItem" search="RegistryItem/Path" type="mir" />
+        <Content type="string">HKCU\Software\Microsoft\Windows\CurrentVersion\Run\Redline</Content>
+      </IndicatorItem>
+      <IndicatorItem condition="is">
+        <Context document="Network" search="Network/RemoteIP" type="mir" />
+        <Content type="IP">192.168.1.100</Content>
+      </IndicatorItem>
+      <IndicatorItem condition="is">
+        <Context document="Network" search="Network/RemoteDomain" type="mir" />
+        <Content type="string">malicious-domain.com</Content>
+      </IndicatorItem>
+    </Indicator>
+  </definition>
+</ioc>
